@@ -1,0 +1,13 @@
+WEBHOOK_HITOKU = ""
+WEBHOOK_FTQC   = ""
+WEBHOOK_NEDO   = ""
+WEBHOOK_MED    = ""
+WEBHOOK_QI     = ""
+WEBHOOK_LAB    = ""
+
+MENTION_HITOKU = "@team_秘匿"
+MENTION_FTQC   = "@team_FTQC"
+MENTION_NEDO   = "@team_NEDO"
+MENTION_MED    = "@team_医療QML"
+MENTION_QI     = "@team_QI"
+MENTION_LAB    = "@here"
