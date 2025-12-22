@@ -1,0 +1,36 @@
+name: Discord Meeting Reminders
+
+on:
+  schedule:
+    # JST 17:30 = UTC 08:30
+    - cron: "30 8 * * MON"
+    - cron: "30 8 * * TUE"
+    - cron: "30 8 * * WED"
+    - cron: "30 8 * * THU"
+    - cron: "30 8 * * FRI"
+  workflow_dispatch:
+
+jobs:
+  send-reminders:
+    runs-on: ubuntu-latest
+    env:
+      WEBHOOK_HITOKU: ${{ secrets.WEBHOOK_HITOKU }}
+      WEBHOOK_FTQC: ${{ secrets.WEBHOOK_FTQC }}
+      WEBHOOK_NEDO: ${{ secrets.WEBHOOK_NEDO }}
+      WEBHOOK_MED: ${{ secrets.WEBHOOK_MED }}
+      WEBHOOK_QI: ${{ secrets.WEBHOOK_QI }}
+      WEBHOOK_LAB: ${{ secrets.WEBHOOK_LAB }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r discord_bot/requirements.txt
+
+      - name: Run bot
+        run: python -m discord_bot.bot
